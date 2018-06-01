@@ -4,7 +4,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Notes API', type: :request do
+RSpec.describe 'Notebooks API', type: :request do
   let!(:notebooks) { create_list(:notebook, 10) }
   let(:notebook_id) { notebooks.first.id }
 
@@ -51,7 +51,7 @@ RSpec.describe 'Notes API', type: :request do
   describe 'POST /notebooks' do
     let(:valid_attributes) { { title: 'My title' } }
 
-    context 'when the request is valid' do
+    context 'when the payload body is valid' do
       before { post '/notebooks', params: valid_attributes }
 
       it 'creates a notebook' do
@@ -63,7 +63,7 @@ RSpec.describe 'Notes API', type: :request do
       end
     end
 
-    context 'when the request is invalid' do
+    context 'when the payload body is invalid' do
       before { post '/notebooks' }
 
       it 'returns status code 422' do
